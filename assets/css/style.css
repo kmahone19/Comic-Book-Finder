@@ -16,6 +16,7 @@
   background-image: url("../images/marvelbackground.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center center;
  
 }
 
@@ -29,6 +30,7 @@
 .card-body{
   height: 200px;
   overflow: auto;
+
 }
 
 .card-header {
@@ -61,11 +63,32 @@
   
 }
 .card-body-3, .card-body, .card-body-4 {
-  background-color: lightgray;
+  background-color: rgb(219, 219, 189);
   font-family: 'Bitter', serif;
+
 
 }
 
+.btnSize{
+  font-size: 14px;
+  
+}
+
 .lead{
-  font-family: 'Archivo Black', sans-serif
+  font-family: 'Bitter', serif;
+}
+
+.btnHover:hover, .btnHover:active {
+	background: darkred;
+  color: whitesmoke;
+  top: 1px;
+  left: 1px;
+  box-shadow: 2px 2px black;
+
+}
+.btn{
+  box-shadow: 3px 3px black;
+  position: relative;
+  left: 0;
+  top: 0;
 }
