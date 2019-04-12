@@ -13,9 +13,10 @@
 
 .container-fluid {
   
-  background-blend-mode: multiply;
-  background-color: black;
-  
+  background-image: url("../images/marvel-background-2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+
 
 }
 
@@ -39,8 +40,10 @@
 }
 
 .card-image-top {
-  height: 20px;
+  height: 50px;
   width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 #character-name {
