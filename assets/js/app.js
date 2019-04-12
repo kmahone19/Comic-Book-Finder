@@ -1,6 +1,6 @@
 // movie list variable with sub-objects for the info 
 var movies = [{
-    name: "Captian America: The First Avenger",
+    name: "Captain America: The First Avenger",
     movieId: 1771
   },
   {
@@ -36,15 +36,15 @@ var movies = [{
     movieId: 76338
   },
   {
-    name: "Captian America: The Winter Soilder ",
+    name: "Captain America: The Winter Soilder ",
     movieId: 100402
   },
   {
-    name: "Gaurdians of the Galaxy",
+    name: "Guardians of the Galaxy",
     movieId: 118340
   },
   {
-    name: "Gaurdians of the Galaxy Vol. 2",
+    name: "Guardians of the Galaxy Vol. 2",
     movieId: 283995
   },
   {
@@ -102,7 +102,7 @@ function makeBtns() {
 }
 
 // when a movie button is clicked....
-$(document).on("click", "#movie-btn", function () {
+$(document).on("click", ".movie-btn", function () {
   // the movie info is epmtied and the movie id is grabed and passed to the url
   $("#movie-info").empty();
   var movie = $(this).attr("data-id");
