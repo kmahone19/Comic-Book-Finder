@@ -1,6 +1,7 @@
 .jumbotron {
   background-image: url("../images/comic_books.jpg");
   background-position: center;
+  background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
   background-position-y: 7%;
@@ -12,15 +13,16 @@
 }
 
 .container-fluid {
-  
-  background-blend-mode: multiply;
-  background-color: black;
-  
-
+  background-image: url("../images/marvelbackground.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+ 
 }
 
 .title {
   font-weight: bold !important;
+  font-family: 'Bangers', cursive;
+  letter-spacing: 2px;
   
 }
 
@@ -30,12 +32,17 @@
 }
 
 .card-header {
-  font-weight: bold;
-  color: black;
-  background-image: "../images/comic_books.jpg" !important;
+  font-weight: bolder;
+  color: white;
+  background-image: url("../images/comic_books.jpg");
+  background-attachment: fixed;
   background-blend-mode: multiply;
   background-color: tomato;
   text-align: center;
+  font-family: 'Bangers', cursive;
+  letter-spacing: 2px;
+  font-size: 20px;
+  
 }
 
 .card-image-top {
@@ -55,4 +62,10 @@
 }
 .card-body-3, .card-body, .card-body-4 {
   background-color: lightgray;
+  font-family: 'Bitter', serif;
+
+}
+
+.lead{
+  font-family: 'Archivo Black', sans-serif
 }
