@@ -94,7 +94,7 @@ function makeBtns() {
     $movieBtn
       .attr("data-name", movies[i].name)
       .attr("data-id", movies[i].movieId)
-      .attr("class", "movie-btn")
+      .attr("id", "movie-btn")
       .attr("class", "btnHover btn btn-danger m-1 btnSize")
       .text(movies[i].name);
     $("#movie-buttons").append($movieBtn);
@@ -102,7 +102,7 @@ function makeBtns() {
 }
 
 // when a movie button is clicked....
-$(document).on("click", ".movie-btn", function () {
+$(document).on("click", "#movie-btn", function () {
   // the movie info is epmtied and the movie id is grabed and passed to the url
   $("#movie-info").empty();
   var movie = $(this).attr("data-id");
