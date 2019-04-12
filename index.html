@@ -1,27 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
-<link rel="stylesheet" href="assets/css/style.css">
-<title>Title</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <title>Comic Book Finder</title>
 </head>
+
 <body>
 
-<h1>This is deployed!</h1>
+  <div class="jumbotron jumbotron-fluid text-center">
+    <div class="container">
+      <h1 class="display-4 title">Comic Book Finder</h1>
+      <p class="lead">We'll tell you which comic books to read to find your favorite characters!</p>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row">
+      <!-- column 1 on the left -->
+      <div class="col-4">
+        <!-- 3 rows -->
+        <!-- <div class = "card my-2">
+          <div class = "card-body-2"> -->
+            <div class = "row my-3">
+              <div class = "col-9">
+                  <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+              </div>
+              <div class = "col-3">
+                  <button type = "submit" class = "btn btn-light">Submit</button>
+              </div>
+            </div>
+             
+          <!-- </div>
+        </div> -->
+        <div class="row my-2" >
+          <!-- movie buttons -->
+          <div class = "card">
+            <div class = "card-header">
+              Choose a Movie
+            </div>
+              <div class = "card-body-3" id="movie-buttons"> 
+             </div>
+            </div>
+        </div>
+
+        <div class="row my-2">
+          <div class = "card">
+            <div class = "card-header">
+              Movie Information
+            </div>
+            <div class = "card-body"  id="movie-info">
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- end column -->
+
+      <!-- column 2 on the right -->
+      <div class="col-8">
+        <div class = "card my-3">
+          <div class = "card-header">
+            Comic Book Info
+          </div>
+            <div class = "card-body-4">
+                <div row id="character-name" class = "text-center">
+                    <!-- character image will go here -->
+                    Spiderman
+                  </div>
+                  <div row>
+                    <div class="row my-2">
+                      <div id="image" class="col-3">
+                        <!-- character image -->
+                        <img class ="image-2 border border-dark" src = "assets/images/Marvel-Comics-Fresh-Start-2018.jpg">
+                      </div>
+          
+                      <div id="comics" class="col-9">
+                        <div row id="bio" class = "my-2">
+                          <!-- bio will go here from API -->
+                          <h5>Bio:</h5>
+                          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta tempora voluptatum maiores ea quam qui numquam, tempore minima iusto eum. Laborum ipsa nemo commodi ipsum explicabo, laudantium sunt esse aut?
+                        </div>
+                        <div row id="pictures" class = "my-2">
+                          <!-- pictures of comics will go here -->
+                          <h5>Comic Book Info:</h5>
+                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium ab aliquid voluptatum totam possimus consectetur, cum impedit alias odio doloribus quisquam dolore reiciendis quis soluta similique ipsum laboriosam culpa necessitatibus!
+                        </div>
+                      </div>
+          
+                    </div>
+                  </div>
+            </div>
+        </div>
+        
+      </div>
+      <!-- end column -->
+    </div>
+  </div>
 
 
-
-<div id="movie-buttons"></div>
-<div id="character-dump" class="container"></div>
- <br><br><br>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script src="assets/js/app.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="assets/js/app.js"></script>
 </body>
+
 </html>

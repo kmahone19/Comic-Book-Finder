@@ -1,4 +1,4 @@
-// movie list variable 
+// movie list variable with sub-objects for the info 
 var movies = [{
     name: "Captian America: The First Avenger",
     movieId: 1771
@@ -69,7 +69,7 @@ var movies = [{
   },
   {
     name: "Thor: Ragnarok",
-    movieId: 280453
+    movieId: 284053
   },
 
   {
@@ -88,7 +88,6 @@ var movies = [{
 
 // makes all the buttons for the movies
 function makeBtns() {
-  $("#movie-buttons").empty();
 
   for (var i = 0; i < movies.length; i++) {
     var $movieBtn = $("<button>");
@@ -96,7 +95,7 @@ function makeBtns() {
       .attr("data-name", movies[i].name)
       .attr("data-id", movies[i].movieId)
       .attr("id", "movie-btn")
-      .attr("class", "btn")
+      .attr("class", "btn btn-outline-danger m-1 btnSize")
       .text(movies[i].name);
     $("#movie-buttons").append($movieBtn);
   }
@@ -104,29 +103,39 @@ function makeBtns() {
 
 // when a movie button is clicked....
 $(document).on("click", "#movie-btn", function () {
-  // the character dump is epmtied and the movie id is grabed and passed to the url
-  $("#character-dump").empty();
+  // the movie info is epmtied and the movie id is grabed and passed to the url
+  $("#movie-info").empty();
   var movie = $(this).attr("data-id");
   var movieQueryURL = "https://api.themoviedb.org/3/movie/" + movie + "/credits?api_key=d6abfcd6eaf4d9a26a2d1b693349854f";
 
-  // run the ajax event
+  // run ajax
   $.ajax({
     url: movieQueryURL,
     method: "GET"
   }).then(function (response) {
-    // with the response check for the avengers movie ids to print a large number of characters
-    if (movie === 24428 || movie === 299536 || movie === 99861) {
+    
+    // with the response check for the Avengers movie ids to print a larger number of characters
+    if (movie = 24428 || movie == 299536 || movie == 99861) {
+     
       for (var i = 0; i < 35; i++) {
+        // variables to create new elements for each button and name 
         var characterDiv = $("<div>")
           .attr("class", "row mb-2");
         var characterP = $("<span>");
         var characterBtn = $("<button>");
-        characterP.text(response.cast[i].name);
+
+        // a variable to hold a single name for a character
+        var characterData = response.cast[i].character.split("/");
+        
+        characterP.text(response.cast[i].name)
+          .attr("class", "pt-1");
+
         characterBtn.text(response.cast[i].character)
-          .attr("data-chatacter", response.cast[i].character)
-          .attr("class", "mr-3 btn btn-outline-danger");
+        // data-character holds a single name for searching the comic book data
+          .attr("data-character", characterData[0].trim())
+          .attr("class", "mr-3 p-1 btn btn-outline-danger");
         characterDiv.append(characterBtn, characterP, );
-        $("#character-dump").append(characterDiv);
+        $("#movie-info").append(characterDiv);
       }
     } 
     // for all other movies print the first 20 characters
@@ -136,12 +145,14 @@ $(document).on("click", "#movie-btn", function () {
           .attr("class", "row mb-2");
         var characterP = $("<span>");
         var characterBtn = $("<button>");
-        characterP.text(response.cast[i].name);
+        var characterData = response.cast[i].character.split("/");
+        characterP.text(response.cast[i].name)
+        .attr("class", "pt-1");
         characterBtn.text(response.cast[i].character)
-          .attr("data-chatacter", response.cast[i].character)
-          .attr("class", "mr-3 btn btn-outline-danger");
+          .attr("data-character", characterData[0].trim())
+          .attr("class", "mr-3 btn p-1 btn-outline-danger");
         characterDiv.append(characterBtn, characterP);
-        $("#character-dump").append(characterDiv);
+        $("#movie-info").append(characterDiv);
       }
     };
   })
