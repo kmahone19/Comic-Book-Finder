@@ -95,7 +95,7 @@ function makeBtns() {
       .attr("data-name", movies[i].name)
       .attr("data-id", movies[i].movieId)
       .attr("id", "movie-btn")
-      .attr("class", "btn btn-outline-danger m-1 btnSize")
+      .attr("class", "btnHover btn btn-danger m-1 btnSize")
       .text(movies[i].name);
     $("#movie-buttons").append($movieBtn);
   }
@@ -133,7 +133,7 @@ $(document).on("click", "#movie-btn", function () {
         characterBtn.text(response.cast[i].character)
         // data-character holds a single name for searching the comic book data
           .attr("data-character", characterData[0].trim())
-          .attr("class", "mr-3 p-1 btn btn-outline-danger");
+          .attr("class", "mr-3 p-1 btn btn-danger btnHover");
         characterDiv.append(characterBtn, characterP, );
         $("#movie-info").append(characterDiv);
       }
@@ -150,7 +150,7 @@ $(document).on("click", "#movie-btn", function () {
         .attr("class", "pt-1");
         characterBtn.text(response.cast[i].character)
           .attr("data-character", characterData[0].trim())
-          .attr("class", "mr-3 btn p-1 btn-outline-danger");
+          .attr("class", "mr-3 btn p-1 btn-danger btnHover");
         characterDiv.append(characterBtn, characterP);
         $("#movie-info").append(characterDiv);
       }
