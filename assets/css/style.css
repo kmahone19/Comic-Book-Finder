@@ -56,3 +56,7 @@
 .card-body-3, .card-body, .card-body-4 {
   background-color: lightgray;
 }
+
+.btnSize{
+  font-size: 14px;
+}
