@@ -94,7 +94,7 @@ function makeBtns() {
     $movieBtn
       .attr("data-name", movies[i].name)
       .attr("data-id", movies[i].movieId)
-      .attr("id", "movie-btn")
+      .attr("class", "movie-btn")
       .attr("class", "btnHover btn btn-danger m-1 btnSize")
       .text(movies[i].name);
     $("#movie-buttons").append($movieBtn);
