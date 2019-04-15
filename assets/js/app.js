@@ -132,8 +132,15 @@ $(document).on("click", "#movie-btn", function () {
 
         characterBtn.text(response.cast[i].character)
         // data-character holds a single name for searching the comic book data
-          .attr("data-character", characterData[0].trim())
           .attr("class", "mr-3 p-1 btn btn-danger btnHover");
+
+      // check for character multiple character names, if there is more use the second name in the array
+        if(characterData[1]){
+          characterBtn.attr("data-character", characterData[1].trim() )
+        } else {
+          characterBtn.attr("data-character", characterData[0] )
+        }
+
         characterDiv.append(characterBtn, characterP, );
         $("#movie-info").append(characterDiv);
       }
