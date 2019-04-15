@@ -13,6 +13,13 @@
 }
 
 .container-fluid {
+  
+  background-image: url("../images/marvel-background-2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+
+  background-image: url("../images/marvelbackground.jpg");
   background-image: url("../images/marvelbackground2.jpg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -50,8 +57,10 @@
 }
 
 .card-image-top {
-  height: 20px;
+  height: 50px;
   width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 #character-name {
@@ -99,3 +108,9 @@
   top: 0;
 }
 
+@media screen and (max-width: 965px) {
+  #right-card {
+    margin-left: 10px;
+    
+  }
+}
