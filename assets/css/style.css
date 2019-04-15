@@ -20,9 +20,12 @@
 
 
   background-image: url("../images/marvelbackground.jpg");
+  background-image: url("../images/marvelbackground2.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
+  background-blend-mode: multiply;
+  background-color: red;
  
 }
 
@@ -71,8 +74,12 @@
   
 }
 .card-body-3, .card-body, .card-body-4 {
-  background-color: rgb(219, 219, 189);
+  background-image: url("../images/comicbookpaper.jpg");
+   background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
   font-family: 'Bitter', serif;
+
 
 
 }
@@ -101,3 +108,8 @@
   top: 0;
 }
 
+@media screen and (max-width: 965px) {
+  #right-card {
+    margin-left: 10px;
+  }
+}
