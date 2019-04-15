@@ -132,7 +132,8 @@ $(document).on("click", "#movie-btn", function () {
 
         characterBtn.text(response.cast[i].character)
         // data-character holds a single name for searching the comic book data
-          .attr("class", "mr-3 p-1 btn btn-danger btnHover");
+          .attr("class", "mr-3 p-1 btn btn-danger btnHover")
+          .attr("id", "character-btn");
 
       // check for character multiple character names, if there is more use the second name in the array
         if(characterData[1]){
@@ -157,7 +158,8 @@ $(document).on("click", "#movie-btn", function () {
         .attr("class", "pt-1");
         characterBtn.text(response.cast[i].character)
           .attr("data-character", characterData[0].trim())
-          .attr("class", "mr-3 btn p-1 btn-danger btnHover");
+          .attr("class", "mr-3 btn p-1 btn-danger btnHover")
+          .attr("id", "character-btn");
         characterDiv.append(characterBtn, characterP);
         $("#movie-info").append(characterDiv);
       }
@@ -168,3 +170,37 @@ $(document).on("click", "#movie-btn", function () {
 
 // run make buttons on load
 makeBtns();
+
+// Event listener for when user clicks character buttons
+$(document).on("click", "#character-btn", function () {
+  // clears data currently in "Comic Book Info" card
+  $("#character-name").empty();
+  $("#image").empty();
+  $("#bio").empty();
+  $("#pictures").empty();
+
+  // pull the character name from the button
+  var characterName = "Ant-Man"
+  // temp commenting out button info pull while figuring out reliable search term
+  // $(this).attr("data-character");
+  console.log(characterName);
+  var charNameNoSpace = characterName
+  // temp commenting out space replace
+  // .replace(" ", "%20");
+  console.log(charNameNoSpace);
+  // data fields the API will return
+  var fieldList = "&field_list=aliases,count_of_issue_appearances,deck,first_appeared_in_issue,id,image,name,origin,real_name";
+  
+  // Build the URL for the Comic Vine Query
+  var comicVineURL = "https://alex-rosencors.herokuapp.com?url=https://comicvine.gamespot.com/api/characters/?api_key=fb977c36a2f57bed0f744c1a48a73a2360ea71c6&format=json&filter=name:"+ charNameNoSpace + "&limit=10" + fieldList;
+
+  // Ajax'ing the Comic Vine API
+  $.ajax({
+    url: comicVineURL,
+    method: "GET"
+    })
+  .then(function(comicVineResponse) {
+    console.log(comicVineURL);
+    console.log(comicVineResponse);
+  });
+})
