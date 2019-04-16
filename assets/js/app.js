@@ -74,7 +74,7 @@ var movies = [{
 
   {
     name: "Black Panther",
-    movieId: 284052
+    movieId: 284054
   },
   {
     name: "Avengers: Infinity War",
@@ -86,6 +86,23 @@ var movies = [{
   },
 ];
 
+// MUSIC FUNCTION 
+const theme = new Audio("assets/theme-song/marvel-theme.mp3");
+var musicPlaying = false;
+
+$("#title-button").on("click", function () {
+  if (!theme.currentTime) {
+    theme.currentTime = 0;
+  }
+
+  if (musicPlaying == false) {
+    theme.play();
+    musicPlaying = true;
+  } else {
+    theme.pause();
+    musicPlaying = false;
+  }
+});
 // makes all the buttons for the movies
 function makeBtns() {
 
@@ -113,10 +130,10 @@ $(document).on("click", "#movie-btn", function () {
     url: movieQueryURL,
     method: "GET"
   }).then(function (response) {
-    
+
     // with the response check for the Avengers movie ids to print a larger number of characters
     if (movie = 24428 || movie == 299536 || movie == 99861) {
-     
+
       for (var i = 0; i < 35; i++) {
         // variables to create new elements for each button and name 
         var characterDiv = $("<div>")
@@ -126,26 +143,26 @@ $(document).on("click", "#movie-btn", function () {
 
         // a variable to hold a single name for a character
         var characterData = response.cast[i].character.split("/");
-        
+
         characterP.text(response.cast[i].name)
           .attr("class", "pt-1");
 
         characterBtn.text(response.cast[i].character)
-        // data-character holds a single name for searching the comic book data
+          // data-character holds a single name for searching the comic book data
           .attr("class", "mr-3 p-1 btn btn-danger btnHover")
           .attr("id", "character-btn");
 
-      // check for character multiple character names, if there is more use the second name in the array
-        if(characterData[1]){
-          characterBtn.attr("data-character", characterData[1].trim() )
+        // check for character multiple character names, if there is more use the second name in the array
+        if (characterData[1]) {
+          characterBtn.attr("data-character", characterData[1].trim())
         } else {
-          characterBtn.attr("data-character", characterData[0] )
+          characterBtn.attr("data-character", characterData[0])
         }
 
         characterDiv.append(characterBtn, characterP, );
         $("#movie-info").append(characterDiv);
       }
-    } 
+    }
     // for all other movies print the first 20 characters
     else {
       for (var i = 0; i < 20; i++) {
@@ -155,7 +172,7 @@ $(document).on("click", "#movie-btn", function () {
         var characterBtn = $("<button>");
         var characterData = response.cast[i].character.split("/");
         characterP.text(response.cast[i].name)
-        .attr("class", "pt-1");
+          .attr("class", "pt-1");
         characterBtn.text(response.cast[i].character)
           .attr("data-character", characterData[0].trim())
           .attr("class", "mr-3 btn p-1 btn-danger btnHover")
@@ -181,6 +198,8 @@ $(document).on("click", "#character-btn", function () {
   $("#first-issue-cover").empty();
   $("#first-issue-info").empty();
 
+  $("#link").empty();
+
   // pull the character name from the button
   var characterName = $(this).attr("data-character");
   console.log(characterName);
@@ -189,14 +208,14 @@ $(document).on("click", "#character-btn", function () {
   console.log(charNameNoSpace);
   // data fields the API will return
   var fieldList = "&field_list=aliases,count_of_issue_appearances,deck,first_appeared_in_issue,id,image,name,origin,real_name";
-  
+
   // Build the URL for the Comic Vine Query
-  var comicVineURL = "https://alex-rosencors.herokuapp.com?url=https://comicvine.gamespot.com/api/characters/?api_key=fb977c36a2f57bed0f744c1a48a73a2360ea71c6&format=json&filter=name:"+ charNameNoSpace + "&limit=10" + fieldList;
+  var comicVineURL = "https://alex-rosencors.herokuapp.com?url=https://comicvine.gamespot.com/api/characters/?api_key=fb977c36a2f57bed0f744c1a48a73a2360ea71c6&format=json&filter=name:" + charNameNoSpace + "&limit=10" + fieldList;
 
   // Ajax'ing the Comic Vine API
   $.ajax({
-    url: comicVineURL,
-    method: "GET"
+      url: comicVineURL,
+      method: "GET"
     })
   .then(function(comicVineResponse) {
     console.log(comicVineURL);
@@ -230,6 +249,7 @@ $(document).on("click", "#character-btn", function () {
     console.log(firstIssueID);
     var firstComicURL = "https://alex-rosencors.herokuapp.com?url=https://comicvine.gamespot.com/api/issues/?api_key=fb977c36a2f57bed0f744c1a48a73a2360ea71c6&format=json&filter=id:" + firstIssueID;
     console.log(firstComicURL);
+  
     // Ajax query for 1st issue information
     $.ajax({
       url: firstComicURL,
@@ -260,20 +280,31 @@ $(document).on("click", "#character-btn", function () {
 
 
       });
-
-
+    
     // Print data to comic info panel
     $("#character-name").text(name);
     $("#character-name").append(charByLine);
     $("#character-byline").text(realName);
     $("#bio").text(deck);
     $("#image").append(imageReplace);
+    
+      // create a link to an Amazon search for the characters comics
+      var url = "https://www.amazon.com/s?url=search-alias%3Daps&field-keywords=" + characterName + " comics";
+
+      var $a = $("<a>")
+        .attr("href", url)
+        .attr("target", "_blank")
+        .text("Look for some " + characterName + " comics!");
+
+      $("#link").append($a);
+
   });
+
 })
 // Ajaxing the first issue
 
 // When submit is clicked
-$("#submit").on("click", function(event){
+$("#submit").on("click", function (event) {
   // prevent page refresh on click 
   event.preventDefault();
   // pull user input and reformate to a searchable form
