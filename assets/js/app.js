@@ -74,7 +74,7 @@ var movies = [{
 
   {
     name: "Black Panther",
-    movieId: 284052
+    movieId: 284054
   },
   {
     name: "Avengers: Infinity War",
@@ -195,6 +195,7 @@ $(document).on("click", "#character-btn", function () {
   $("#image").empty();
   $("#bio").empty();
   $("#pictures").empty();
+  $("#link").empty();
 
   // pull the character name from the button
   var characterName = "Ant-Man"
