@@ -20,6 +20,7 @@
   background-position: center center;
   background-blend-mode: multiply;
   background-color: red;
+  height: 100%;
  
 }
 
@@ -118,3 +119,5 @@
     justify-content: center;
   }
 }
+
+
