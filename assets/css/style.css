@@ -14,12 +14,6 @@
 
 .container-fluid {
   
-  background-image: url("../images/marvel-background-2.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-
-
-  background-image: url("../images/marvelbackground.jpg");
   background-image: url("../images/marvelbackground2.jpg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -112,5 +106,11 @@
   #right-card {
     margin-left: 10px;
     
+  }
+}
+@media screen and (max-width: 575px) {
+  #submit-button {
+    margin-top: 5px;
+    justify-content: center;
   }
 }
