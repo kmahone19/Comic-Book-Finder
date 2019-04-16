@@ -180,13 +180,10 @@ $(document).on("click", "#character-btn", function () {
   $("#pictures").empty();
 
   // pull the character name from the button
-  var characterName = "Ant-Man"
-  // temp commenting out button info pull while figuring out reliable search term
-  // $(this).attr("data-character");
+  var characterName = $(this).attr("data-character");
   console.log(characterName);
-  var charNameNoSpace = characterName
+  var charNameNoSpace = characterName.replace(" ", "%20");
   // temp commenting out space replace
-  // .replace(" ", "%20");
   console.log(charNameNoSpace);
   // data fields the API will return
   var fieldList = "&field_list=aliases,count_of_issue_appearances,deck,first_appeared_in_issue,id,image,name,origin,real_name";
