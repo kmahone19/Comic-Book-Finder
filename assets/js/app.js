@@ -202,5 +202,29 @@ $(document).on("click", "#character-btn", function () {
   .then(function(comicVineResponse) {
     console.log(comicVineURL);
     console.log(comicVineResponse);
+    
+    // assign response data to variables 
+    // and console log variables for testing
+    var name = comicVineResponse.results[0].name;
+    console.log(name);
+    var aliases = comicVineResponse.results[0].aliases;
+    var aliasesEdited = aliases.split(/\r?\n|\r/);
+    console.log(aliases);
+    console.log(aliasesEdited[0]);
+    var deck = comicVineResponse.results[0].deck;
+    console.log(deck);
+    var characterImage = comicVineResponse.results[0].image.medium_url;
+    console.log(characterImage);
+    var imageReplace = $("<img>")
+    .attr("class", "image-2 border border-dark")
+    .attr("src", characterImage)
+    .attr("alt", "character image")
+    .attr("id", "char-image");
+
+
+    // Print data to comic info panel
+    $("#character-name").text(name);
+    $("#bio").text(deck);
+    $("#image").append(imageReplace);
   });
 })
