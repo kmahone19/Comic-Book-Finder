@@ -228,3 +228,13 @@ $(document).on("click", "#character-btn", function () {
     $("#image").append(imageReplace);
   });
 })
+
+// When submit is clicked
+$("#submit").on("click", function(event){
+  // prevent page refresh on click 
+  event.preventDefault();
+  // pull user input and reformate to a searchable form
+  var characterName = $("#characterSearch").val().trim()
+    .replace(" ", "%20");
+
+})
