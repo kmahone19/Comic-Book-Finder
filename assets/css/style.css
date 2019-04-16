@@ -37,8 +37,9 @@
 }
 
 .card-body {
-  height: 400px;
+  height: 200px;
   overflow: auto;
+  
 }
 
 .card-header {
@@ -122,6 +123,17 @@
     margin-top: 5px;
     justify-content: center;
   }
+ 
 }
 
+@media screen and (max-width: 767px) {
+  #char-image {
+    height: 300px;
+    width: 300px;
+  }
+  #first-issue-cover {
+    height: 300px;
+    width: 300px;
+  }
+}
 
