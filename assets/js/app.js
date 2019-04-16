@@ -178,6 +178,8 @@ $(document).on("click", "#character-btn", function () {
   $("#image").empty();
   $("#bio").empty();
   $("#pictures").empty();
+  $("#first-issue-cover").empty();
+  $("#first-issue-info").empty();
 
   // pull the character name from the button
   var characterName = $(this).attr("data-character");
@@ -217,14 +219,58 @@ $(document).on("click", "#character-btn", function () {
     .attr("src", characterImage)
     .attr("alt", "character image")
     .attr("id", "char-image");
+    var realName = comicVineResponse.results[0].real_name;
+    console.log(realName);
+    var charByLine = $("<h4>")
+    .attr("id", "character-byline")
+    .attr("class", "text-center");
+
+    // build URL for first issue query
+    var firstIssueID = comicVineResponse.results[0].first_appeared_in_issue.id;
+    console.log(firstIssueID);
+    var firstComicURL = "https://alex-rosencors.herokuapp.com?url=https://comicvine.gamespot.com/api/issues/?api_key=fb977c36a2f57bed0f744c1a48a73a2360ea71c6&format=json&filter=id:" + firstIssueID;
+    console.log(firstComicURL);
+    // Ajax query for 1st issue information
+    $.ajax({
+      url: firstComicURL,
+      method: "GET"
+      })
+      .then(function(firstIssueResponse){
+        console.log(firstIssueResponse);
+        var issueCover = firstIssueResponse.results[0].image.medium_url;
+        var coverReplace = $("<img>")
+        .attr("class", "image-2 border border-dark")
+        .attr("src", issueCover)
+        .attr("alt", "first issue cover")
+        .attr("id", "first-issue-cover");
+        var issueName = $("<div>")
+        .attr("id", "issue-name")
+        .text("Issue Name: " + firstIssueResponse.results[0].name);
+        var issueNumber = $("<div>")
+        .attr("id", "issue-number")
+        .text("Issue Number: " + firstIssueResponse.results[0].issue_number);
+        var issueDate = $("<div>")
+        .attr("id", "issue-date")
+        .text("Cover Date: " + firstIssueResponse.results[0].cover_date);
+       
+        $("#first-issue-cover").append(coverReplace);
+        $("#first-issue-info").append(issueName);
+        $("#first-issue-info").append(issueNumber);
+        $("#first-issue-info").append(issueDate);
+
+
+      });
 
 
     // Print data to comic info panel
     $("#character-name").text(name);
+    $("#character-name").append(charByLine);
+    $("#character-byline").text(realName);
     $("#bio").text(deck);
     $("#image").append(imageReplace);
   });
 })
+// Ajaxing the first issue
 
 // When submit is clicked
 $("#submit").on("click", function(event){
