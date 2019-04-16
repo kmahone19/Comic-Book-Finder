@@ -86,6 +86,23 @@ var movies = [{
   },
 ];
 
+// MUSIC FUNCTION 
+const theme = new Audio("assets/theme-song/marvel-theme.mp3");
+var musicPlaying = false;
+
+$("#title-button").on("click", function() {
+  if (!theme.currentTime) {
+    theme.currentTime = 0;
+  }
+
+  if(musicPlaying == false){
+        theme.play();
+        musicPlaying = true;
+     }else {
+        theme.pause();
+        musicPlaying = false;
+    }
+});
 // makes all the buttons for the movies
 function makeBtns() {
 
