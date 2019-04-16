@@ -31,10 +31,14 @@
   
 }
 
-.card-body{
+.card-body-3 {
   height: 200px;
   overflow: auto;
+}
 
+.card-body {
+  height: 400px;
+  overflow: auto;
 }
 
 .card-header {
