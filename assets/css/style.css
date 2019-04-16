@@ -79,9 +79,6 @@
   background-size: cover;
   background-position: center center;
   font-family: 'Bitter', serif;
-
-
-
 }
 
 .btnSize{
@@ -135,5 +132,14 @@
     height: 300px;
     width: 300px;
   }
+}
+
+#char-image {
+  height: 200px;
+  
+}
+
+#firt-issue-cover {
+  height: 200px;
 }
 
